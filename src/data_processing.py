@@ -72,7 +72,7 @@ def subsample_words(words: List[str], vocab_to_int: Dict[str, int], threshold: f
     # Convert words to integers
     int_words: List[int] = [vocab_to_int[word] for word in words]
     freqs: Dict[str, float] = dict(Counter(words))
-    train_words: List[str] = [word for word in words if 1 - math.sqrt(threshold/freqs[word]) >= 0.5]
+    train_words: List[int] = [vocab_to_int[word] for word in words if 1 - math.sqrt(threshold/freqs[word]) >= 0.5]
 
     return train_words, freqs
 
